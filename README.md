@@ -26,24 +26,33 @@ Markdown-server 提供了Markdown的数学公式 `LaTex`，以及流程图`yUML`
 - `yuml`: yUML 流程图表达式
 - `theme`: 主题，支持 `dark`（深色主题）
 - `format`: 输出格式，支持 `png`（默认）、`jpeg`、`svg`
+- `dpi`: 分辨率，支持 72-600（默认300），仅对PNG和JPEG有效
 
 ### 格式说明
-- **PNG**: 保持透明背景，适合网页使用
-- **JPEG**: 自动添加背景色（浅色主题为白色，深色主题为黑色），文件更小
-- **SVG**: 矢量格式，可无限缩放
+- **PNG**: 保持透明背景，适合网页使用，支持DPI调节
+- **JPEG**: 自动添加背景色（浅色主题为白色，深色主题为黑色），文件更小，支持DPI调节
+- **SVG**: 矢量格式，可无限缩放，不受DPI影响
+
+### DPI说明
+- **72 DPI**: 网页标准分辨率，文件最小，适合在线显示
+- **150 DPI**: 中等分辨率，平衡清晰度和文件大小
+- **300 DPI**: 高分辨率（默认），适合打印和高清显示
+- **600 DPI**: 最高分辨率，文件最大，适合专业印刷
 
 ### 使用示例
 
 #### LaTeX 数学公式
-- PNG格式（默认，透明背景）: `http://localhost:8001/?tex=x%20%3D%20%7B-b%20%5Cpm%20%5Csqrt%7Bb%5E2-4ac%7D%20%5Cover%202a%7D.`
-- JPEG格式（白色背景）: `http://localhost:8001/?tex=x%20%3D%20%7B-b%20%5Cpm%20%5Csqrt%7Bb%5E2-4ac%7D%20%5Cover%202a%7D.&format=jpeg`
+- PNG格式（默认，透明背景，300 DPI）: `http://localhost:8001/?tex=x%20%3D%20%7B-b%20%5Cpm%20%5Csqrt%7Bb%5E2-4ac%7D%20%5Cover%202a%7D.`
+- JPEG格式（白色背景，300 DPI）: `http://localhost:8001/?tex=x%20%3D%20%7B-b%20%5Cpm%20%5Csqrt%7Bb%5E2-4ac%7D%20%5Cover%202a%7D.&format=jpeg`
+- 高分辨率PNG（600 DPI）: `http://localhost:8001/?tex=x%20%3D%20%7B-b%20%5Cpm%20%5Csqrt%7Bb%5E2-4ac%7D%20%5Cover%202a%7D.&format=png&dpi=600`
+- 网页优化JPEG（72 DPI）: `http://localhost:8001/?tex=x%20%3D%20%7B-b%20%5Cpm%20%5Csqrt%7Bb%5E2-4ac%7D%20%5Cover%202a%7D.&format=jpeg&dpi=72`
 - JPEG深色主题（黑色背景）: `http://localhost:8001/?tex=x%20%3D%20%7B-b%20%5Cpm%20%5Csqrt%7Bb%5E2-4ac%7D%20%5Cover%202a%7D.&format=jpeg&theme=dark`
 - SVG格式: `http://localhost:8001/?tex=x%20%3D%20%7B-b%20%5Cpm%20%5Csqrt%7Bb%5E2-4ac%7D%20%5Cover%202a%7D.&format=svg`
-- 深色主题PNG: `http://localhost:8001/?tex=x%20%3D%20%7B-b%20%5Cpm%20%5Csqrt%7Bb%5E2-4ac%7D%20%5Cover%202a%7D.&theme=dark`
 
 #### yUML 流程图
-- PNG格式（默认）: `http://localhost:8001/?yuml=%2F%2F%20%7Btype%3Aactivity%7D%0A%2F%2F%20%7Bgenerate%3Atrue%7D%0A%0A(start)-%3E%3Ca%3E%5Bkettle%20empty%5D-%3E(Fill%20Kettle)-%3E%7Cb%7C%0A%3Ca%3E%5Bkettle%20full%5D-%3E%7Cb%7C-%3E(Boil%20Kettle)-%3E%7Cc%7C%0A%7Cb%7C-%3E(Add%20Tea%20Bag)-%3E(Add%20Milk)-%3E%7Cc%7C-%3E(Pour%20Water)%0A(Pour%20Water)-%3E(end)`
-- JPEG格式: `http://localhost:8001/?yuml=...&format=jpeg`
+- PNG格式（默认，300 DPI）: `http://localhost:8001/?yuml=%2F%2F%20%7Btype%3Aactivity%7D%0A%2F%2F%20%7Bgenerate%3Atrue%7D%0A%0A(start)-%3E%3Ca%3E%5Bkettle%20empty%5D-%3E(Fill%20Kettle)-%3E%7Cb%7C%0A%3Ca%3E%5Bkettle%20full%5D-%3E%7Cb%7C-%3E(Boil%20Kettle)-%3E%7Cc%7C%0A%7Cb%7C-%3E(Add%20Tea%20Bag)-%3E(Add%20Milk)-%3E%7Cc%7C-%3E(Pour%20Water)%0A(Pour%20Water)-%3E(end)`
+- JPEG格式（300 DPI）: `http://localhost:8001/?yuml=...&format=jpeg`
+- 高分辨率JPEG（600 DPI）: `http://localhost:8001/?yuml=...&format=jpeg&dpi=600`
 - SVG格式: `http://localhost:8001/?yuml=...&format=svg`
 
 ## 查看服务

@@ -6,4 +6,4 @@ node_modules
 test_*.png
 test_*.jpeg
 test_*.svg
-test.js
+test*.js
