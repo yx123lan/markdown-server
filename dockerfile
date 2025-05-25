@@ -2,14 +2,14 @@ FROM node:8
 
 WORKDIR /usr/src/app
 
-ADD https://github.com/sbfkcel/markdown-server/archive/refs/heads/master.zip /usr/src/app/
+# 复制本地代码到容器中
+COPY . .
 
-RUN unzip master.zip
-
-WORKDIR /usr/src/app/markdown-server-master
-
+# 安装依赖
 RUN npm install
 
+# 暴露端口
 EXPOSE 8001
 
+# 启动应用
 CMD [ "node", "index.js" ]
