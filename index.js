@@ -8,7 +8,7 @@ const http = require("http"),
 mathjax.start();
 
 // SVG转换为其他格式的函数
-const convertSvg = async (svgContent, format = 'png', theme = 'light', dpi = 300) => {
+const convertSvg = async (svgContent, format = 'png', theme = 'light', dpi = 200) => {
     if (format === 'svg') {
         return svgContent;
     }
