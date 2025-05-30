@@ -8,7 +8,7 @@ const http = require("http"),
 mathjax.start();
 
 // SVG转换为其他格式的函数
-const convertSvg = async (svgContent, format = 'png', theme = 'light', dpi = 200) => {
+const convertSvg = async (svgContent, format = 'png', theme = 'light', dpi = 120) => {
     if (format === 'svg') {
         return svgContent;
     }
@@ -17,7 +17,7 @@ const convertSvg = async (svgContent, format = 'png', theme = 'light', dpi = 200
         const buffer = Buffer.from(svgContent);
         // 设置高DPI以提高清晰度
         let sharpInstance = sharp(buffer, { 
-            density: dpi  // 设置DPI，默认300，比默认的72高很多
+            density: dpi  // 设置DPI，默认120，比默认的72高很多
         });
         
         if (format === 'jpeg' || format === 'jpg') {
